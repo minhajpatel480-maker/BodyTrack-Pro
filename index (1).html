@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101510">
+<title>BodyTrack Pro — Transform Your Body</title>
+<style>
+:root{--bg:#0b100d;--panel:#141c17;--panel2:#1a251e;--green:#a7ff3f;--green2:#7ed321;--text:#f2f7f1;--muted:#9aa99d;--line:#29372d;--red:#ff6b6b;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#1b2b1c 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}.app{display:flex;min-height:100vh}.sidebar{width:250px;background:#0e1510;border-right:1px solid var(--line);padding:24px 16px;position:fixed;inset:0 auto 0 0;z-index:5;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:11px;padding:4px 10px 28px}.logo{width:42px;height:42px;border-radius:14px;background:var(--green);display:grid;place-items:center;color:#0b100d;font-size:25px;font-weight:1000;box-shadow:0 0 25px #a7ff3f40}.brand strong{font-size:18px;letter-spacing:.2px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px;margin-top:2px}
+.nav-label{font-size:10px;letter-spacing:1.8px;color:#718075;padding:12px 12px 8px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#b7c4b9;padding:12px;border-radius:12px;text-align:left;display:flex;gap:12px;align-items:center;font-weight:600}.nav button:hover,.nav button.active{background:#1b2a1e;color:var(--green)}.nav .ico{width:20px;text-align:center;font-size:17px}.side-bottom{margin-top:auto;border-top:1px solid var(--line);padding:18px 10px 0;color:var(--muted);font-size:11px;line-height:1.7}
+.main{margin-left:250px;width:calc(100% - 250px);padding:28px 34px 60px;max-width:1600px}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;gap:15px}.eyebrow{color:var(--green);font-size:11px;letter-spacing:2px;font-weight:800}.topbar h1{font-size:27px;margin:5px 0 0}.profile{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);padding:8px 13px;border-radius:30px}.avatar{width:34px;height:34px;border-radius:50%;background:var(--green);color:#111;display:grid;place-items:center;font-weight:900}.profile small{color:var(--muted);display:block;font-size:11px}
+.page{display:none}.page.active{display:block}.hero{background:linear-gradient(110deg,#1d2d20,#111a14 70%);border:1px solid #304531;border-radius:24px;padding:28px 30px;display:flex;justify-content:space-between;align-items:center;gap:20px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:240px;height:240px;border:35px solid #a7ff3f0c;border-radius:50%;right:9%;top:-90px}.hero h2{font-size:clamp(24px,3vw,36px);margin:8px 0}.hero p{color:var(--muted);max-width:550px;line-height:1.6;margin:0}.hero .cta{position:relative;z-index:1;background:var(--green);color:#101510;border:0;border-radius:12px;padding:13px 18px;font-weight:900;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:18px 0}.stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:19px}.stat-top{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.stat-icon{font-size:19px}.stat strong{font-size:27px;display:block;margin:13px 0 4px}.stat small{color:var(--muted)}.green{color:var(--green)!important}
+.columns{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}.card h3{margin:0 0 16px;font-size:16px}.card-sub{color:var(--muted);font-size:12px;margin-top:-10px;margin-bottom:15px}
+.progress{height:8px;background:#29372d;border-radius:20px;overflow:hidden;margin:10px 0}.progress span{display:block;height:100%;background:var(--green);border-radius:20px;transition:width .3s}.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.quick button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:13px;padding:15px;text-align:left}.quick button b{display:block;color:var(--green);font-size:20px;margin-bottom:4px}.quick button span{font-size:12px;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:8px 0 18px;gap:15px}.section-head h2{margin:5px 0;font-size:25px}.section-head p{margin:0;color:var(--muted);font-size:13px}.form-row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.field{display:flex;flex-direction:column;gap:7px;flex:1;min-width:130px}.field label{font-size:11px;color:var(--muted);font-weight:700}.field input,.field select{background:#0e1510;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:12px;min-width:0;width:100%;outline:none}.field input:focus,.field select:focus{border-color:var(--green)}.btn{background:var(--green);color:#101510;border:0;border-radius:10px;padding:12px 17px;font-weight:900}.btn.secondary{background:#26352a;color:var(--text);border:1px solid var(--line)}.btn.danger{background:#422426;color:#ffaaaa}.result{margin-top:14px;padding:14px;background:#1d2c20;border:1px solid #38543a;border-radius:12px;color:#dfffd0;line-height:1.6}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:10px;letter-spacing:1px;text-transform:uppercase}td:last-child{text-align:right}.empty{color:var(--muted);font-size:13px;padding:18px 0}
+.workout-list{display:grid;gap:10px}.workout{display:flex;align-items:center;gap:12px;padding:13px;background:var(--panel2);border:1px solid var(--line);border-radius:12px}.workout input{accent-color:var(--green);width:18px;height:18px}.workout div{flex:1}.workout small{color:var(--muted);display:block;margin-top:3px}.workout.done strong{text-decoration:line-through;color:var(--muted)}
+.water-cups{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:18px 0}.cup{height:55px;border:1px solid #34483a;background:#101912;border-radius:9px;color:#64766a;font-size:20px}.cup.filled{background:#284d31;border-color:var(--green);color:var(--green)}
+.chart{height:210px;width:100%;display:block}.chart-note{font-size:11px;color:var(--muted)}
+footer{text-align:center;color:#738176;font-size:11px;margin:35px 0 0;line-height:1.8}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--green);color:#101510;padding:12px 18px;border-radius:12px;font-weight:800;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;z-index:10}.toast.show{opacity:1;transform:translateY(0)}
+.mobile-menu{display:none;background:var(--panel);border:1px solid var(--line);color:var(--green);border-radius:10px;padding:9px 12px}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.sidebar{transform:translateX(-100%);transition:.25s;width:250px;box-shadow:15px 0 40px #0008}.sidebar.open{transform:translateX(0)}.main{margin:0;width:100%;padding:18px 15px 45px}.mobile-menu{display:block}.topbar{margin-bottom:18px}.topbar h1{font-size:21px}.hero{padding:22px;display:block}.hero .cta{margin-top:18px}.columns{grid-template-columns:1fr}.grid{gap:10px}.stat,.card{padding:15px}.stat strong{font-size:23px}.water-cups{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:390px){.grid{grid-template-columns:1fr 1fr}.profile .who{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">ϟ</div><div><strong>BodyTrack Pro</strong><small>FITNESS • TRANSFORM</small></div></div>
+  <div class="nav-label">WORKSPACE</div>
+  <nav class="nav">
+    <button class="active" data-page="dashboard"><span class="ico">▦</span> Dashboard</button>
+    <button data-page="bmi"><span class="ico">⚖</span> BMI Calculator</button>
+    <button data-page="weight"><span class="ico">↗</span> Weight Tracker</button>
+    <button data-page="workout"><span class="ico">✦</span> Workout Planner</button>
+    <button data-page="calories"><span class="ico">🔥</span> Calories Tracker</button>
+    <button data-page="water"><span class="ico">💧</span> Water Tracker</button>
+    <button data-page="diet"><span class="ico">🥗</span> Diet Planner</button>
+    <button data-page="profile"><span class="ico">◉</span> My Profile</button>
+  </nav>
+  <div class="side-bottom">YOUR FITNESS JOURNEY STARTS HERE.<br><span class="green">STAY CONSISTENT. GET STRONGER.</span></div>
+</aside>
+<main class="main">
+<header class="topbar">
+  <div style="display:flex;align-items:center;gap:12px"><button class="mobile-menu" id="menuBtn">☰</button><div><div class="eyebrow">YOUR PERSONAL FITNESS SPACE</div><h1 id="pageTitle">Dashboard</h1></div></div>
+  <div class="profile"><div class="avatar" id="avatar">F</div><div class="who"><strong id="profileName">Fitness Member</strong><small>Personal dashboard</small></div></div>
+</header>
+
+<section class="page active" id="dashboard">
+  <div class="hero"><div><div class="eyebrow">MAKE EVERY DAY COUNT</div><h2>Build strength. <span class="green">Own your progress.</span></h2><p>Track your weight, workouts, calories and daily habits in one simple place. Small steps create big changes.</p></div><button class="cta" onclick="showPage('workout')">Start today's workout →</button></div>
+  <div class="grid">
+    <div class="stat"><div class="stat-top">CURRENT WEIGHT <span class="stat-icon">⚖️</span></div><strong id="dashWeight">— kg</strong><small id="weightChange">Add your first entry</small></div>
+    <div class="stat"><div class="stat-top">BMI <span class="stat-icon">📊</span></div><strong id="dashBMI">—</strong><small id="bmiLabel">Complete your profile</small></div>
+    <div class="stat"><div class="stat-top">CALORIES TODAY <span class="stat-icon">🔥</span></div><strong id="dashCalories">0</strong><small>kcal logged today</small></div>
+    <div class="stat"><div class="stat-top">WATER TODAY <span class="stat-icon">💧</span></div><strong id="dashWater">0 / 8</strong><small>glasses completed</small></div>
+  </div>
+  <div class="columns">
+    <div class="card"><h3>Today's activity</h3><div class="card-sub">Your daily hydration goal</div><div style="display:flex;justify-content:space-between"><strong id="waterProgressText">0%</strong><span class="chart-note">8 glasses target</span></div><div class="progress"><span id="waterProgress" style="width:0%"></span></div><div class="quick"><button onclick="showPage('weight')"><b>＋</b><span>Log weight</span></button><button onclick="showPage('calories')"><b>＋</b><span>Log calories</span></button><button onclick="showPage('water')"><b>＋</b><span>Drink water</span></button><button onclick="showPage('bmi')"><b>↗</b><span>Calculate BMI</span></button></div></div>
+    <div class="card"><h3>Weight progress</h3><div class="card-sub">Your recent weight entries</div><canvas id="weightChart" class="chart" width="600" height="230"></canvas><div class="chart-note">Log your weight regularly to see your trend.</div></div>
+  </div>
+</section>
+
+<section class="page" id="bmi">
+  <div class="section-head"><div><div class="eyebrow">BODY METRICS</div><h2>BMI Calculator</h2><p>Estimate your Body Mass Index using your height and weight.</p></div></div>
+  <div class="columns"><div class="card"><h3>Your measurements</h3><div class="form-row"><div class="field"><label>HEIGHT (CM)</label><input id="bmiHeight" type="number" min="80" max="250" placeholder="e.g. 175"></div><div class="field"><label>WEIGHT (KG)</label><input id="bmiWeight" type="number" min="20" max="350" placeholder="e.g. 70"></div></div><button class="btn" onclick="calculateBMI()">Calculate BMI</button><div id="bmiResult"></div></div><div class="card"><h3>BMI guide for adults</h3><p class="card-sub">General screening categories, not a diagnosis.</p><div class="workout-list"><div class="workout"><div><strong>Below 18.5</strong><small>Underweight</small></div></div><div class="workout"><div><strong>18.5 – 24.9</strong><small>Healthy weight range</small></div></div><div class="workout"><div><strong>25 – 29.9</strong><small>Overweight</small></div></div><div class="workout"><div><strong>30 or above</strong><small>Obesity range</small></div></div></div><p class="chart-note">BMI is a rough screening tool and does not directly measure body fat or overall health.</p></div></div>
+</section>
+
+<section class="page" id="weight">
+  <div class="section-head"><div><div class="eyebrow">TRACK YOUR CHANGE</div><h2>Weight Tracker</h2><p>Record your weight and follow your progress over time.</p></div></div>
+  <div class="columns"><div class="card"><h3>Add weight entry</h3><div class="form-row"><div class="field"><label>WEIGHT (KG)</label><input id="weightInput" type="number" step=".1" min="20" max="350" placeholder="e.g. 72.5"></div><div class="field"><label>DATE</label><input id="weightDate" type="date"></div></div><button class="btn" onclick="addWeight()">Save weight</button></div><div class="card"><h3>Progress summary</h3><div class="grid" style="grid-template-columns:1fr 1fr;margin:0"><div><small class="chart-note">LATEST</small><strong id="latestWeight" style="display:block;font-size:25px;margin-top:8px">—</strong></div><div><small class="chart-note">CHANGE</small><strong id="weightDelta" style="display:block;font-size:25px;margin-top:8px">—</strong></div></div></div></div>
+  <div class="card" style="margin-top:16px"><h3>Weight history</h3><div class="table-wrap"><table><thead><tr><th>Date</th><th>Weight</th><th></th></tr></thead><tbody id="weightRows"></tbody></table></div></div>
+</section>
+
+<section class="page" id="workout">
+  <div class="section-head"><div><div class="eyebrow">MOVE WITH PURPOSE</div><h2>Workout Planner</h2><p>Tick off exercises as you complete them. Your daily completion is saved.</p></div><button class="btn secondary" onclick="resetWorkout()">Reset day</button></div>
+  <div class="columns"><div class="card"><h3>Full-body starter plan</h3><div class="card-sub">Beginner-friendly sample • adjust to your ability</div><div class="workout-list" id="workoutList"></div></div><div class="card"><h3>Workout completion</h3><strong id="workoutCount" style="font-size:34px">0 / 6</strong><div class="progress"><span id="workoutProgress" style="width:0%"></span></div><p class="chart-note">Warm up first, use good form, and rest when needed. Stop if you feel pain or unwell.</p></div></div>
+</section>
+
+<section class="page" id="calories">
+  <div class="section-head"><div><div class="eyebrow">FUEL YOUR BODY</div><h2>Calories Tracker</h2><p>Log meals and snacks to keep a simple daily food record.</p></div></div>
+  <div class="columns"><div class="card"><h3>Add food entry</h3><div class="form-row"><div class="field"><label>FOOD / MEAL</label><input id="foodName" placeholder="e.g. 2 boiled eggs"></div><div class="field"><label>CALORIES (KCAL)</label><input id="foodCalories" type="number" min="0" max="10000" placeholder="e.g. 150"></div></div><button class="btn" onclick="addFood()">Add entry</button></div><div class="card"><h3>Today's total</h3><strong id="calorieTotal" style="font-size:38px">0 <small style="font-size:13px;color:var(--muted)">kcal</small></strong><p class="chart-note">Calorie needs vary by age, body size, activity and goals. This tracker does not prescribe a target.</p></div></div>
+  <div class="card" style="margin-top:16px"><h3>Today's food log</h3><div class="table-wrap"><table><thead><tr><th>Food</th><th>Calories</th><th></th></tr></thead><tbody id="foodRows"></tbody></table></div></div>
+</section>
+
+<section class="page" id="water">
+  <div class="section-head"><div><div class="eyebrow">HYDRATION HABIT</div><h2>Water Tracker</h2><p>Tap a glass to record your water intake today.</p></div></div>
+  <div class="card"><h3>Daily hydration</h3><strong id="waterCount" style="font-size:36px">0 / 8 glasses</strong><div class="progress"><span id="waterBar" style="width:0%"></span></div><div class="water-cups" id="waterCups"></div><button class="btn" onclick="addWater()">＋ Add a glass</button> <button class="btn secondary" onclick="removeWater()">− Undo</button><p class="chart-note" style="margin-top:16px">Eight glasses is a simple reminder target, not a universal medical requirement. Needs vary with climate, activity and health.</p></div>
+</section>
+
+<section class="page" id="diet">
+  <div class="section-head"><div><div class="eyebrow">SMARTER FOOD CHOICES</div><h2>Diet Planner</h2><p>Plan balanced meals. Adjust portions to your needs and preferences.</p></div></div>
+  <div class="columns">
+    <div class="card"><h3>Sample daily meal planner</h3><div class="workout-list">
+      <div class="workout"><span>🌅</span><div><strong>Breakfast</strong><small>Oats or whole-grain roti, eggs / yogurt, fruit</small></div></div>
+      <div class="workout"><span>☀️</span><div><strong>Lunch</strong><small>Roti or rice, dal / beans, vegetables, curd</small></div></div>
+      <div class="workout"><span>🍎</span><div><strong>Snack</strong><small>Fruit, roasted chana or a handful of nuts</small></div></div>
+      <div class="workout"><span>🌙</span><div><strong>Dinner</strong><small>Protein source, vegetables and a satisfying grain portion</small></div></div>
+    </div></div>
+    <div class="card"><h3>Your own meal notes</h3><div class="field"><label>WRITE YOUR PLAN</label><input id="dietNotes" placeholder="e.g. Breakfast: oats and banana"></div><button class="btn" style="margin-top:12px" onclick="saveDiet()">Save meal notes</button><div class="result" id="dietSaved" style="display:none"></div><p class="chart-note">For a medical diet, allergies or a specific weight goal, seek advice from a qualified dietitian or clinician.</p></div>
+  </div>
+</section>
+
+<section class="page" id="profile">
+  <div class="section-head"><div><div class="eyebrow">YOUR DETAILS</div><h2>My Profile</h2><p>Set up your profile to personalize your dashboard.</p></div></div>
+  <div class="card" style="max-width:700px"><div class="form-row"><div class="field"><label>YOUR NAME</label><input id="nameInput" placeholder="Enter your name"></div><div class="field"><label>AGE</label><input id="ageInput" type="number" min="13" max="110" placeholder="e.g. 25"></div></div><div class="form-row"><div class="field"><label>HEIGHT (CM)</label><input id="heightInput" type="number" min="80" max="250" placeholder="e.g. 170"></div><div class="field"><label>GOAL WEIGHT (KG) — OPTIONAL</label><input id="goalInput" type="number" min="20" max="350" step=".1" placeholder="e.g. 68"></div></div><button class="btn" onclick="saveProfile()">Save profile</button><div class="result" style="margin-top:18px">Your information is stored in this browser on this device. This starter version does not create an online account or sync data between devices.</div></div>
+</section>
+
+<footer>BodyTrack Pro • Transform Your Body, Transform Your Life<br>Editors: Minhaz Musa Patel &amp; Abdullah Ilyas Bhoja</footer>
+</main></div>
+<div class="toast" id="toast">Saved!</div>
+<script>
+const KEY='fittrack_pro_v1';
+const today=()=>new Date().toISOString().slice(0,10);
+const defaultData=()=>({profile:{name:'Fitness Member',age:'',height:'',goal:''},weights:[],foods:[],water:{date:today(),count:0},workouts:{date:today(),done:[]},diet:''});
+let data;
+try{data=JSON.parse(localStorage.getItem(KEY))||defaultData()}catch(e){data=defaultData()}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));renderAll()}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));const names={dashboard:'Dashboard',bmi:'BMI Calculator',weight:'Weight Tracker',workout:'Workout Planner',calories:'Calories Tracker',water:'Water Tracker',diet:'Diet Planner',profile:'My Profile'};document.getElementById('pageTitle').textContent=names[id]||'Dashboard';document.getElementById('sidebar').classList.remove('open');if(id==='dashboard')drawChart()}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
+function currentWater(){if(data.water.date!==today())data.water={date:today(),count:0}}
+function currentWorkouts(){if(data.workouts.date!==today())data.workouts={date:today(),done:[]}}
+function bmiValue(){const h=Number(data.profile.height),w=data.weights.length?Number(data.weights[data.weights.length-1].weight):0;return h>0&&w>0?w/((h/100)**2):0}
+function bmiCategory(v){return v<18.5?'Underweight':v<25?'Healthy range':v<30?'Overweight':'Obesity range'}
+function renderAll(){currentWater();currentWorkouts();document.getElementById('profileName').textContent=data.profile.name||'Fitness Member';document.getElementById('avatar').textContent=(data.profile.name||'F').trim().charAt(0).toUpperCase();document.getElementById('dashWeight').textContent=(data.weights.length?data.weights[data.weights.length-1].weight:'—')+' kg';const bmi=bmiValue();document.getElementById('dashBMI').textContent=bmi?bmi.toFixed(1):'—';document.getElementById('bmiLabel').textContent=bmi?bmiCategory(bmi):'Complete your profile';const foods=data.foods.filter(f=>f.date===today());const total=foods.reduce((s,f)=>s+Number(f.calories),0);document.getElementById('dashCalories').textContent=total;document.getElementById('calorieTotal').innerHTML=total+' <small style="font-size:13px;color:var(--muted)">kcal</small>';document.getElementById('dashWater').textContent=data.water.count+' / 8';document.getElementById('waterCount').textContent=data.water.count+' / 8 glasses';const pct=Math.min(100,data.water.count/8*100);document.getElementById('waterProgress').style.width=pct+'%';document.getElementById('waterBar').style.width=pct+'%';document.getElementById('waterProgressText').textContent=Math.round(pct)+'%';document.getElementById('weightRows').innerHTML=data.weights.length?data.weights.slice().reverse().map((w,i)=>`<tr><td>${w.date}</td><td>${w.weight} kg</td><td><button class="btn danger" style="padding:6px 9px" onclick="deleteWeight('${w.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="3" class="empty">No weight entries yet. Add your first measurement above.</td></tr>';const latest=data.weights.at(-1);document.getElementById('latestWeight').textContent=latest?latest.weight+' kg':'—';const delta=data.weights.length>1?Number(data.weights.at(-1).weight)-Number(data.weights[0].weight):null;document.getElementById('weightDelta').textContent=delta===null?'—':(delta>0?'+':'')+delta.toFixed(1)+' kg';document.getElementById('weightChange').textContent=delta===null?'Keep logging to see change':(delta>0?'+':'')+delta.toFixed(1)+' kg since first entry';document.getElementById('foodRows').innerHTML=foods.length?foods.map(f=>`<tr><td>${escapeHTML(f.name)}</td><td>${f.calories} kcal</td><td><button class="btn danger" style="padding:6px 9px" onclick="deleteFood('${f.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="3" class="empty">No food entries for today.</td></tr>';renderWater();renderWorkout();drawChart()}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function calculateBMI(){const h=Number(document.getElementById('bmiHeight').value),w=Number(document.getElementById('bmiWeight').value);if(h<80||h>250||w<20||w>350){toast('Enter valid height and weight');return}const v=w/((h/100)**2);document.getElementById('bmiResult').innerHTML=`<div class="result">Your BMI is <strong>${v.toFixed(1)}</strong><br>Category: <strong>${bmiCategory(v)}</strong><br><small>This is a general screening estimate, not a diagnosis.</small></div>`;data.profile.height=h;save()}
+function addWeight(){const w=Number(document.getElementById('weightInput').value),d=document.getElementById('weightDate').value||today();if(w<20||w>350){toast('Enter a valid weight');return}data.weights=data.weights.filter(x=>x.date!==d);data.weights.push({id:String(Date.now()),weight:w,date:d});data.weights.sort((a,b)=>a.date.localeCompare(b.date));document.getElementById('weightInput').value='';save();toast('Weight saved')}
+function deleteWeight(id){data.weights=data.weights.filter(w=>w.id!==id);save();toast('Entry deleted')}
+function addFood(){const name=document.getElementById('foodName').value.trim(),cal=Number(document.getElementById('foodCalories').value);if(!name||!Number.isFinite(cal)||cal<0||cal>10000){toast('Enter food and valid calories');return}data.foods.push({id:String(Date.now()),name,calories:cal,date:today()});document.getElementById('foodName').value='';document.getElementById('foodCalories').value='';save();toast('Food entry added')}
+function deleteFood(id){data.foods=data.foods.filter(f=>f.id!==id);save();toast('Entry deleted')}
+function addWater(){currentWater();data.water.count=Math.min(30,data.water.count+1);save()}
+function removeWater(){currentWater();data.water.count=Math.max(0,data.water.count-1);save()}
+function renderWater(){document.getElementById('waterCups').innerHTML=Array.from({length:8},(_,i)=>`<button class="cup ${i<data.water.count?'filled':''}" onclick="setWater(${i+1})" aria-label="Set water to ${i+1} glasses">💧</button>`).join('')}
+function setWater(n){currentWater();data.water.count=n;save()}
+const exercises=[['Bodyweight squats','3 sets × 10 reps'],['Wall or knee push-ups','3 sets × 8 reps'],['Glute bridges','3 sets × 12 reps'],['Plank','3 × 20 seconds'],['Brisk walk','10–15 minutes'],['Gentle stretching','5 minutes']];
+function renderWorkout(){document.getElementById('workoutList').innerHTML=exercises.map((e,i)=>`<label class="workout ${data.workouts.done.includes(i)?'done':''}"><input type="checkbox" ${data.workouts.done.includes(i)?'checked':''} onchange="toggleWorkout(${i},this.checked)"><div><strong>${e[0]}</strong><small>${e[1]}</small></div></label>`).join('');document.getElementById('workoutCount').textContent=data.workouts.done.length+' / '+exercises.length;document.getElementById('workoutProgress').style.width=(data.workouts.done.length/exercises.length*100)+'%'}
+function toggleWorkout(i,checked){currentWorkouts();data.workouts.done=checked?[...new Set([...data.workouts.done,i])]:data.workouts.done.filter(x=>x!==i);save()}
+function resetWorkout(){data.workouts={date:today(),done:[]};save();toast('Workout checklist reset')}
+function saveProfile(){const name=document.getElementById('nameInput').value.trim()||'Fitness Member',age=document.getElementById('ageInput').value,height=document.getElementById('heightInput').value,goal=document.getElementById('goalInput').value;if(age&&(age<13||age>110)){toast('Enter a valid age');return}if(height&&(height<80||height>250)){toast('Enter a valid height');return}data.profile={name,age,height,goal};save();toast('Profile saved')}
+function saveDiet(){data.diet=document.getElementById('dietNotes').value;document.getElementById('dietSaved').style.display='block';document.getElementById('dietSaved').textContent=data.diet||'No meal notes added.';save();toast('Meal notes saved')}
+function drawChart(){const c=document.getElementById('weightChart');if(!c)return;const ctx=c.getContext('2d'),w=c.width,h=c.height;ctx.clearRect(0,0,w,h);ctx.strokeStyle='#2b3a2f';ctx.lineWidth=1;for(let i=1;i<5;i++){ctx.beginPath();ctx.moveTo(35,i*h/5);ctx.lineTo(w-15,i*h/5);ctx.stroke()}const arr=data.weights.slice(-8);if(!arr.length){ctx.fillStyle='#9aa99d';ctx.font='16px sans-serif';ctx.textAlign='center';ctx.fillText('Your chart will appear here',w/2,h/2);return}const vals=arr.map(x=>Number(x.weight)),min=Math.min(...vals)-1,max=Math.max(...vals)+1;ctx.strokeStyle='#a7ff3f';ctx.lineWidth=4;ctx.lineJoin='round';ctx.beginPath();arr.forEach((p,i)=>{const x=45+(arr.length===1?0:i*(w-90)/(arr.length-1)),y=h-35-(Number(p.weight)-min)/(max-min||1)*(h-75);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.stroke();arr.forEach((p,i)=>{const x=45+(arr.length===1?0:i*(w-90)/(arr.length-1)),y=h-35-(Number(p.weight)-min)/(max-min||1)*(h-75);ctx.fillStyle='#a7ff3f';ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fill();ctx.fillStyle='#dce8dc';ctx.font='12px sans-serif';ctx.textAlign='center';ctx.fillText(p.weight+'kg',x,y-12)})}
+function init(){document.getElementById('weightDate').value=today();document.getElementById('nameInput').value=data.profile.name==='Fitness Member'?'':data.profile.name;document.getElementById('ageInput').value=data.profile.age;document.getElementById('heightInput').value=data.profile.height;document.getElementById('goalInput').value=data.profile.goal;document.getElementById('bmiHeight').value=data.profile.height;document.getElementById('dietNotes').value=data.diet||'';if(data.diet){document.getElementById('dietSaved').style.display='block';document.getElementById('dietSaved').textContent=data.diet}renderAll()}
+init();
+</script>
+</body>
+</html>

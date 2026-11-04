@@ -12,6 +12,26 @@ header{position:sticky;top:0;z-index:30;background:#080b10ed;backdrop-filter:blu
 .hero{padding:66px 0 55px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}.kicker{color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:850}.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.03;letter-spacing:-3px;margin:13px 0}.hero h1 em{font-style:normal;color:var(--orange)}.hero p{color:var(--muted);font-size:17px;max-width:570px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.secondary{border:1px solid #48586a;background:#151e29;color:white;padding:11px 18px;border-radius:999px;font-weight:750}.hero-visual{height:430px;border:1px solid #3b4857;border-radius:28px;background:radial-gradient(ellipse at 50% 55%,#613516,#1b2029 53%,#10151d);display:grid;place-items:center;position:relative;overflow:hidden}.hero-visual:before,.hero-visual:after{content:"";position:absolute;width:290px;height:290px;border:1px solid #ff8a2a88;border-radius:50%;box-shadow:0 0 55px #ff791d33;animation:spin 18s linear infinite}.hero-visual:after{width:350px;height:350px;border-style:dashed;animation-direction:reverse}.hero-figure{font-size:190px;z-index:1;filter:drop-shadow(0 18px 18px #0009);animation:float 3s ease-in-out infinite}.hero-stamp{position:absolute;z-index:2;background:#0c121be8;border:1px solid #48515d;padding:10px 14px;border-radius:13px;font-size:13px}.hero-stamp b{color:var(--gold)}.stamp-a{top:22px;left:20px}.stamp-b{bottom:22px;right:20px}@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{50%{transform:translateY(-12px)}}
 .section{padding:54px 0}.section-title{margin-bottom:25px}.section-title h2{font-size:clamp(28px,4vw,40px);letter-spacing:-1.5px;margin:5px 0}.section-title p{color:var(--muted);margin:0;max-width:700px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(145deg,#17212c,#10161f);border:1px solid var(--line);border-radius:19px;padding:21px;transition:.2s}.card:hover{border-color:#d77a36;transform:translateY(-4px)}.icon{width:49px;height:49px;border-radius:15px;display:grid;place-items:center;background:#ff841d1b;border:1px solid #ff841d55;font-size:26px}.card h3{margin:13px 0 6px}.card p{margin:0 0 13px;color:var(--muted);font-size:14px}.textbtn{background:none;border:0;padding:0;color:var(--gold);font-weight:850}
 .studio{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}.demo{background:radial-gradient(circle at 50% 35%,#2b3e4f,#101720 70%);border:1px solid var(--line);border-radius:22px;min-height:350px;display:grid;place-items:center;position:relative;overflow:hidden}.demo-label{position:absolute;left:17px;top:15px;font-size:12px;color:var(--gold);letter-spacing:1px;font-weight:850}.demo svg{width:min(85%,330px);height:290px;overflow:visible}.human{stroke:#ffc27c;stroke-width:12;stroke-linecap:round;fill:none}.joint{fill:#ff8a32}.moving-arm{transform-origin:150px 108px;animation:curl 2.5s ease-in-out infinite}.moving-leg{transform-origin:150px 190px;animation:squat 2.5s ease-in-out infinite}.runner-leg{transform-origin:150px 180px;animation:runleg .8s ease-in-out infinite alternate}.runner-arm{transform-origin:150px 110px;animation:runarm .8s ease-in-out infinite alternate}@keyframes curl{0%,100%{transform:rotate(8deg)}50%{transform:rotate(-62deg)}}@keyframes squat{0%,100%{transform:rotate(0)}50%{transform:rotate(38deg)}}@keyframes runleg{to{transform:rotate(35deg)}}@keyframes runarm{to{transform:rotate(-35deg)}}
+
+/* FitForge in-page motion player */
+.demo{padding:18px 12px 76px}
+.demo svg{animation:none}
+.demo .moving-arm,.demo .moving-leg{animation:none}
+.demo[data-mode="curl"] .moving-arm{animation:curl 2.2s ease-in-out infinite}
+.demo[data-mode="squat"] .moving-leg{animation:squat 2.2s ease-in-out infinite}
+.demo[data-mode="cardio"] .moving-arm{animation:runarm .65s ease-in-out infinite alternate}
+.demo[data-mode="cardio"] .moving-leg{animation:runleg .65s ease-in-out infinite alternate}
+.demo[data-mode="push"] svg{animation:pushup 2.1s ease-in-out infinite}
+.demo[data-mode="push"] .moving-arm{animation:pusharm 2.1s ease-in-out infinite}
+@keyframes pushup{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(15px) rotate(2deg)}}
+@keyframes pusharm{0%,100%{transform:rotate(0)}50%{transform:rotate(24deg)}}
+.demo.paused svg,.demo.paused .moving-arm,.demo.paused .moving-leg{animation-play-state:paused!important}
+.motion-controls{position:absolute;left:14px;right:14px;bottom:13px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:#0a111bdc;border:1px solid #526173;border-radius:14px;padding:9px 11px;backdrop-filter:blur(8px)}
+.motion-controls span{font-size:12px;color:#ffd08f;font-weight:800}
+.motion-actions{display:flex;gap:7px}
+.motion-btn{border:1px solid #526173;background:#1b2734;color:#fff;border-radius:9px;padding:7px 10px;font-size:12px;font-weight:800}
+.motion-btn:hover{border-color:var(--orange)}
+
 .lesson{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:23px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tab{border:1px solid var(--line);background:#0d131b;color:#d8e0e9;padding:9px 13px;border-radius:999px;font-size:13px}.tab.active{background:var(--orange);color:#17100a;border-color:var(--orange);font-weight:850}.lesson h3{font-size:24px;margin:8px 0}.lesson p{color:var(--muted)}.steps{padding-left:20px;color:#e5eaf0}.steps li{padding:5px 0}.meta{display:flex;gap:9px;flex-wrap:wrap}.chip{font-size:12px;color:var(--gold);border:1px solid #81532f;padding:5px 9px;border-radius:999px}
 .exercise-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.exercise{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:15px;text-align:left;color:white}.exercise:hover,.exercise.selected{border-color:var(--orange);background:#251b14}.exercise span{font-size:27px;display:block}.exercise b{display:block;margin:7px 0 2px}.exercise small{color:var(--muted)}
 .food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.food{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}.food-art{height:145px;display:grid;place-items:center;font-size:68px;background:radial-gradient(circle at 50% 40%,#66411d,#1b2630)}.food-content{padding:17px}.food-content p{font-size:13px;color:var(--muted)}.meal{display:grid;grid-template-columns:110px 1fr;gap:13px;padding:12px 0;border-bottom:1px solid var(--line)}.meal:last-child{border:0}.meal b{color:var(--gold)}.meal span{font-size:13px;color:var(--muted)}
@@ -31,19 +51,27 @@ footer{border-top:1px solid var(--line);padding:27px 0;color:var(--muted);font-s
 </div></header>
 <main id="top">
 <section class="wrap hero">
-<div><div class="kicker">Your personal fitness classroom</div><h1>Train with purpose.<br><em>Become stronger.</em></h1><p>Learn exercises with animated demonstrations, step-by-step instructions, gym basics, cardio sessions and practical Indian meal ideas — all inside FitForge.</p><div class="actions"><a class="primary" href="#learn">Enter Exercise Studio →</a><a class="secondary" href="#diet">Explore Nutrition</a></div></div>
+<div><div class="kicker">Your personal fitness classroom</div><h1>Train with purpose.<br><em>Become stronger.</em></h1><p>Learn exercises with original animated demonstrations, step-by-step instructions, gym basics, cardio sessions and practical Indian meal ideas — all inside FitForge, without sending you to another website.</p><div class="actions"><a class="primary" href="#learn">Enter Exercise Studio →</a><a class="secondary" href="#diet">Explore Nutrition</a></div></div>
 <div class="hero-visual"><div class="hero-stamp" style="top:20px;left:18px">⚡ <b>Learn every move</b></div><div class="hero-figure">🏋️</div><div class="hero-stamp" style="bottom:20px;right:18px">💪 Strength • Stamina • Health</div></div>
 </section>
-<section class="wrap section" id="learn"><div class="section-title"><div class="kicker">Interactive learning</div><h2>Exercise animation studio</h2><p>Choose a movement. The demonstration, instructions and training notes update right here — no external video or website.</p></div>
+<section class="wrap section" id="learn"><div class="section-title"><div class="kicker">Interactive learning</div><h2>Exercise animation studio</h2><p>Choose a movement. Watch its looping animated demonstration, pause it or change its speed, and follow the instructions right here. No external website is opened.</p></div>
 <div class="studio">
-<div class="demo"><div class="demo-label">LIVE CSS ANIMATION • DEMO</div>
+<div class="demo" id="motionDemo" data-mode="curl"><div class="demo-label">FITFORGE MOTION PLAYER • ANIMATED DEMO</div>
 <svg viewBox="0 0 300 300" role="img" aria-label="Animated exercise figure">
 <circle cx="150" cy="48" r="23" fill="#ffc27c"/><path class="human" d="M150 76 L150 178 M150 102 L105 145 M150 102 L195 145 M150 178 L112 250 M150 178 L188 250"/>
 <g id="arms"><path class="human moving-arm" d="M150 108 L195 145 L205 105"/><path class="human" d="M150 108 L105 145 L95 105"/></g>
 <g id="legs"><path class="human" d="M150 178 L112 250"/><path class="human moving-leg" d="M150 178 L188 250"/></g>
 <circle class="joint" cx="150" cy="108" r="8"/><circle class="joint" cx="150" cy="178" r="8"/>
 <path d="M75 267 H225" stroke="#7c91a5" stroke-width="4" stroke-linecap="round"/>
-</svg></div>
+</svg>
+<div class="motion-controls">
+  <span id="motionStatus">▶ Animation running</span>
+  <div class="motion-actions">
+    <button type="button" class="motion-btn" id="motionToggle">❚❚ Pause</button>
+    <button type="button" class="motion-btn" id="motionSpeed">1× Speed</button>
+  </div>
+</div>
+</div>
 <div class="lesson"><div class="kicker">Selected lesson</div><h3 id="lessonTitle">Biceps Curl</h3><div class="meta"><span class="chip" id="lessonGroup">Arms</span><span class="chip" id="lessonLevel">Beginner</span><span class="chip" id="lessonDose">2–3 sets • 10–12 reps</span></div><p id="lessonIntro">Train the front of your upper arm with a controlled curl.</p><b>How to do it</b><ol class="steps" id="lessonSteps"><li>Stand tall with a light dumbbell in each hand.</li><li>Keep elbows close to your sides.</li><li>Curl slowly, then lower with control.</li></ol><div class="disclaimer">Animation is an educational visual guide, not a substitute for a qualified trainer checking your form.</div></div>
 </div>
 <div class="exercise-grid" id="exerciseButtons" style="margin-top:15px">
@@ -92,8 +120,13 @@ push:{title:"Push-up",group:"Chest & arms",level:"Beginner option: wall",dose:"2
 cardio:{title:"Easy Jogging",group:"Cardio",level:"Beginner",dose:"10–20 minutes • easy pace",intro:"Build endurance with a pace that feels controlled.",steps:["Walk gently for five minutes to warm up.","Jog slowly at a pace where you can speak in short sentences.","Slow to a walk whenever you need recovery.","Finish with an easy walk and gentle mobility."]}
 };
 const $=id=>document.getElementById(id);
-function showLesson(key){const d=lessons[key];$("lessonTitle").textContent=d.title;$("lessonGroup").textContent=d.group;$("lessonLevel").textContent=d.level;$("lessonDose").textContent=d.dose;$("lessonIntro").textContent=d.intro;$("lessonSteps").innerHTML=d.steps.map(s=>`<li>${s}</li>`).join("");document.querySelectorAll(".exercise").forEach(b=>b.classList.toggle("selected",b.dataset.ex===key));const svg=$("learn").querySelector("svg");svg.style.animation="none";void svg.offsetWidth;svg.style.animation="";}
+function showLesson(key){const d=lessons[key];$("lessonTitle").textContent=d.title;$("lessonGroup").textContent=d.group;$("lessonLevel").textContent=d.level;$("lessonDose").textContent=d.dose;$("lessonIntro").textContent=d.intro;$("lessonSteps").innerHTML=d.steps.map(s=>`<li>${s}</li>`).join("");document.querySelectorAll(".exercise").forEach(b=>b.classList.toggle("selected",b.dataset.ex===key));const demo=$("motionDemo");demo.dataset.mode=key;demo.classList.remove("paused");$("motionToggle").textContent="❚❚ Pause";$("motionStatus").textContent="▶ "+d.title+" animation";}
 document.querySelectorAll(".exercise").forEach(b=>b.addEventListener("click",()=>showLesson(b.dataset.ex)));
+
+let motionPaused=false, motionFast=false;
+$("motionToggle").addEventListener("click",()=>{motionPaused=!motionPaused;$("motionDemo").classList.toggle("paused",motionPaused);$("motionToggle").textContent=motionPaused?"▶ Play":"❚❚ Pause";$("motionStatus").textContent=motionPaused?"Ⅱ Animation paused":"▶ Animation running";});
+$("motionSpeed").addEventListener("click",()=>{motionFast=!motionFast;$("motionDemo").style.setProperty("--motion-duration",motionFast?"1.25s":"2.2s");$("motionSpeed").textContent=motionFast?"1.3× Speed":"1× Speed";$("motionDemo").querySelectorAll(".moving-arm,.moving-leg").forEach(el=>{el.style.animationDuration=motionFast?"1.25s":"";});});
+
 const diets={
 balanced:{title:"Balanced everyday meals",rows:[["Breakfast","Poha with peas and curd, or eggs with whole-wheat roti."],["Lunch","Dal, seasonal sabzi, roti or rice, salad and curd."],["Snack","Fruit with roasted chana or plain yoghurt."],["Dinner","Paneer, tofu, dal, fish or chicken with vegetables and roti."]]},
 fat:{title:"Fat-loss eating habits",rows:[["Breakfast","Vegetable omelette or moong chilla with curd."],["Lunch","Dal or lean protein, plenty of sabzi, salad and a measured roti/rice portion."],["Snack","One fruit and roasted chana; choose water over sugary drinks."],["Dinner","Protein source with vegetables and a satisfying, moderate grain portion."]]},
